@@ -1,0 +1,36 @@
+extends ../default
+
+block content
+
+  include ../templates/nav
+
+  div(class=['ui', 'container', 'grid', 'stackable'])
+    div(class=['sixteen', 'wide', 'column'])
+      h1(class=['ui', 'header', 'blue', 'dividing'])= 'Lista de Productos'
+
+      table(class=['ui', 'table', 'celled'] id='tbl-Productos')
+        thead
+          tr
+            th= 'Cod. Producto'
+            th= 'Nombre'
+            th= 'Precio'
+            th= 'Stock'
+            th= 'Categoría'
+            th= 'Fecha de Registro'
+            th= 'Acciones'
+        tbody
+          each producto in productos
+            tr
+              td(id='cod')= producto.cod_pro
+              td= producto.nom_pro
+              td= producto.pre_pro
+              td= producto.stk_pro
+              td= producto.cat_pro
+              td= producto.fec_reg_pro
+              td
+                a(class=['ui button basic icon'] href='/modificarproducto/'+producto.cod_pro data-tooltip='Editar' data-position='top center' id='btn-Editar' style='margin-right:20px;')
+                  i(class=['edit', 'icon'])
+                a(class=['ui button basic icon'] href='#' data-tooltip='Eliminar' data-position='top center' id='btn-Eliminar' style='margin-left:20px')
+                  i(class=['trash','icon'])
+                  
+  script(src='/javascripts/productoval.js')
